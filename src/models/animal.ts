@@ -3,23 +3,43 @@ import mongoose from 'mongoose';
 const Schema = new mongoose.Schema({
   nome: {
       type: String,
-      require: true,
+      require: true
   },
   raca: {
       type: String,
-      require: true,
+      require: true
   },
   peso: {
-      type: String,
-      require: true,
+      type: Number,
+      require: true
+  },
+  mediaLeite: {
+    type: String,
+    require: true
   },
   datNasc: {
-      type: String,
-      require: true,
+      type: Date,
+      require: true
+  },
+  dataDes: {
+    type: Date,
+    required: true
+  },
+  sexo: {
+    type: String, 
+    required: true 
+  },
+  faixaEta: {
+    type: String, 
+    required: true 
+  },
+  status: {
+    type: String, 
+    required: true 
   },
   usuario: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'usuario',
+      ref: 'usuario'
   },
   evento: [
     {
@@ -41,17 +61,4 @@ const Schema = new mongoose.Schema({
   ]
 })
 
-const AnimalSchema = new Schema<Animal>({
-    id: { type: Number, required: true},
-    nome: { type: String, required: true },
-    raca: { type: String, required: true },
-    peso: { type: Number, required: true },
-    medLeite: {type: Number, required: true },
-    dataNasc: { type: Date, required: true},
-    dataDes: {type: Date, required: true},
-    sexo: {type: String, required: true },
-    faixaEta: {type: String, required: true },
-    status: {type: String, required: true }
-  });
-  
-  export = mongoose.model('animal', Schema);
+export = mongoose.model('animal', Schema);

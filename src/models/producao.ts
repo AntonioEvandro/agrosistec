@@ -1,8 +1,26 @@
+import mongoose from 'mongoose';
 
+const Schema = new mongoose.Schema({
+  primOrdenha: {
+    type: Number,
+    require: true
+  },
+  segOrdenha: {
+      type: Number,
+      require: true
+  },
+  data: {
+    type: Date, 
+    required: true 
+  },
+  usuario: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'usuario'
+  },
+  animal: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'animal'
+  }
+})
 
-interface ProdLeite {
-  id: any,
-  primeira_ordenha: number,
-  segunda_ordenha: number,
-  date_registro: Date
-}
+export = mongoose.model('evento', Schema);

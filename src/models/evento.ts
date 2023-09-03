@@ -1,11 +1,42 @@
+import mongoose from 'mongoose';
 
-interface Evento {
-  id: any,
-  nome: string,
-  veterinario: string,
-  valor: number,
-  problema: string,
-  medicamento: string,
-  valorMedica: number,
-  data: Date
-}
+const Schema = new mongoose.Schema({
+  nome: {
+      type: String,
+      require: true
+  },
+  veterinario: {
+      type: String,
+      require: true
+  },
+  valorVet: {
+      type: Number,
+      require: true
+  },
+  preoblema: {
+    type: String,
+    require: true
+  },
+  medicamento: {
+      type: String,
+      require: true
+  },
+  valorMedica: {
+    type: Number,
+    required: true
+  },
+  data: {
+    type: Date, 
+    required: true 
+  },
+  usuario: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'usuario'
+  },
+  animal: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'animal'
+  }
+})
+
+export = mongoose.model('evento', Schema);
