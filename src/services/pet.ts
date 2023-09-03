@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Tt from "../models/usuario";
+import Tt from "../Models/usuario";
 import { v4 as uuidv4 } from 'uuid';
 
 // Cria animal add em tutor

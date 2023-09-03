@@ -1,6 +1,6 @@
 import { Request, Response} from 'express'
 import jwt from 'jsonwebtoken'
-import Tt from '../models/usuario'
+import Tt from '../Models/usuario'
 
 export async function login (req: Request, res: Response){
   const { email, password } = req.body

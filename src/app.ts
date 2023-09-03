@@ -15,7 +15,7 @@ app.use('/agrosistec', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 const port = config.get<number>("port");
 
 // Rotas
-import router from "./controllers/router";
+import router from "./Routes/router";
 
 app.use("/", router);
 

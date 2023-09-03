@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import Tt from "../models/usuario";
+import Tt from "../Models/usuario";
 
 /*--------------------funções--------------------------------*/
 // todos tutores
