@@ -1,0 +1,497 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Microservice Veterinary",
+    "version": "1.0",
+    "description": "Microservice for veterinary clinic"
+  },
+  "tags": [
+    {
+      "name": "Login",
+      "description": "Log in first of all."
+    },{
+      "name": "Tutor",
+      "description": "Features for tutors"
+    },
+    {
+      "name": "Pet",
+      "description": "Features for pets"
+    }
+  ],
+
+  "paths": {
+    "/auth": {
+      "post": {
+        "tags":["Login"],
+        "summary": "Authenticate the given tutor.",
+        "requestBody": {
+          "description": "Tutor credentials",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Auth"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Authentication was successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "invalid credentials"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/GET/tutors": {
+      "get": {
+        "tags": ["Tutor"],
+        "summary": "Retrieves all tutors.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of tutors",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Tutor"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Access denied"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/GET/tutor/{id}": {
+      "get":{
+        "tags": ["Tutor"],
+        "summary": "Get specific tutor",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security":[
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tutor data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Tutor"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/POST/tutor": {
+      "post": {
+        "tags": ["Tutor"],
+        "summary": "Create a new tutor",
+        "requestBody": {
+          "description": "Data for a new tutor",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tutor"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Tutor added"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/PUT/tutor/{id}": {
+      "put": {
+        "tags": ["Tutor"],
+        "summary": "Updates a tutor",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "New data for the tutor",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tutor"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tutor updated"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "404": {
+            "description": "Tutor not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/DELETE/tutor/{id}": {
+      "delete": {
+        "tags": ["Tutor"],
+        "summary": "Deletes a tutor",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Tutor deleted"
+          },
+          "404": {
+            "description": "Tutor not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/POST/pet/{tutorId}": {
+      "post": {
+        "tags": ["Pet"],
+        "summary": "Creates a pet and adds it to a tutor",
+        "parameters": [
+          {
+            "name": "tutorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "Data for a new pet",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Pet added"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Tutor not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/PUT/pet/{petId}/tutor/{tutorId}": {
+      "put": {
+        "tags": ["Pet"],
+        "summary": "Updates a pet's info",
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tutorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "New data for the pet",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Pet updated"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/DELETE/pet/{petId}/tutor/{tutorId}": {
+      "delete": {
+        "tags": ["Pet"],
+        "summary": "Deletes a pet from a tutor",
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tutorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Pet deleted"
+          },
+          "401": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Auth": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "format": "password"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "AuthResponse": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          }
+        }
+      },
+      "Tutor": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": "joao"
+          },
+          "password": {
+            "type": "string",
+            "format": "password",
+            "default": "joaodogas"
+          },
+          "phone": {
+            "type": "string",
+            "default": "15849565317"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "default": "jao@dasgaiolas.com"
+          },
+          "date_of_birth": {
+            "type": "string",
+            "format": "date",
+            "default": "1993-02-01 02:01"
+          },
+          "zip_code": {
+            "type": "string",
+            "default": "64590000"
+          },
+          "pets": {
+            "type": "array",
+            "default": []
+          }
+        },
+        "required": [
+          "name",
+          "password",
+          "phone",
+          "email",
+          "date_of_birth",
+          "zip_code",
+          "pets"
+          
+        ]
+      },
+      "Pet": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": "Shana"
+          },
+          "species": {
+            "type": "string",
+            "default": "cat"
+          },
+          "carry": {
+            "type": "string",
+            "default": "p"
+          },
+          "weight": {
+            "type": "number",
+            "format": "float",
+            "default": 1
+          },
+          "date_of_birth": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "required": [
+          "name",
+          "species",
+          "carry",
+          "weight",
+          "date_of_birth"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
