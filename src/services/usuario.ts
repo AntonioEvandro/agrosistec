@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import usuario from "../models/model";
+import usuario from "../models/usuario";
 import animal from "../models/animal";
 
 /*----------------- *** Funcionalidades *** ----------------------*/

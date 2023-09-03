@@ -1,47 +1,45 @@
-import mongoose,{Schema} from 'mongoose';
+import mongoose from 'mongoose';
 
-interface Evento {
-  id: any,
-  nome: string,
-  veterinario: string,
-  valor: number,
-  problema: string,
-  medicamento: string,
-  valorMedica: number,
-  data: Date
-}
-
-interface Alimentacao {
-  id: any,
-  tipo: string,
-  regime: string,
-  quantidade: number,
-  data: Date
-}
-
-interface ProdLeite {
-  id: any,
-  primeira_ordenha: number,
-  segunda_ordenha: number,
-  date_registro: Date
-}
-
-interface Animal extends Document{
-  id: any,
-  nome: string,
-  raca: string,
-  peso: number,
-  medLeite: number,
-  dataNasc: Date,
-  dataDes: Date,
-  sexo: string,
-  faixaEta: string,
-  status: string,
-  evenVet: Evento[],
-  alimentacao: Alimentacao[],
-  prodLeite: ProdLeite[]
-}
-
+const Schema = new mongoose.Schema({
+  nome: {
+      type: String,
+      require: true,
+  },
+  raca: {
+      type: String,
+      require: true,
+  },
+  peso: {
+      type: String,
+      require: true,
+  },
+  datNasc: {
+      type: String,
+      require: true,
+  },
+  usuario: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'usuario',
+  },
+  evento: [
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'evento'
+    }
+  ],
+  alimentacao: [
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'alimentacao'
+    }
+  ],
+  producao: [
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'producao'
+    }
+  ]
+})
 
 const AnimalSchema = new Schema<Animal>({
     id: { type: Number, required: true},
@@ -53,31 +51,7 @@ const AnimalSchema = new Schema<Animal>({
     dataDes: {type: Date, required: true},
     sexo: {type: String, required: true },
     faixaEta: {type: String, required: true },
-    status: {type: String, required: true },
-    evenVet: { 
-      type: [
-        { 
-          type: Schema.Types.Mixed 
-        }
-      ] as any, default: []
-    },
-    alimentacao: { 
-      type: [
-        { 
-          type: Schema.Types.Mixed 
-        }
-      ] as any, default: []
-    },
-    prodLeite: { 
-        type: [
-          { 
-            type: Schema.Types.Mixed 
-          }
-        ] as any, default: []
-    }
-
+    status: {type: String, required: true }
   });
   
-  const animal = mongoose.model<Animal>('animal', AnimalSchema);
-  
-  export default animal;
+  export = mongoose.model('animal', Schema);
