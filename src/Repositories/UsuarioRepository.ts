@@ -1,11 +1,11 @@
-import usuario from "../Models/usuario";
+import Usuario from "../models/usuario";
 
 export class UsuarioRepository {
   // Método para criar um novo Usuario no banco de dados
   async createUsuario(data: any) {
     try {
       // Chama o método create do modelo usuario passando os dados recebidos
-      return await usuario.create(data);
+      return await Usuario.create(data);
     } catch (error) {
       // Em caso de erro, lança o erro para ser tratado posteriormente
       throw error;
@@ -16,7 +16,7 @@ export class UsuarioRepository {
   async updateUsuario(usuarioId: string, updatedData: any) {
     try {
       // Chama o método findByIdAndUpdate do modelo usuario para atualizar o usuario com o ID fornecido
-      return await usuario.findByIdAndUpdate(usuarioId, updatedData);
+      return await Usuario.findByIdAndUpdate(usuarioId, updatedData);
     } catch (error) {
       // Em caso de erro, lança o erro para ser tratado posteriormente
       throw error;
@@ -27,7 +27,7 @@ export class UsuarioRepository {
   async findAllUsuarios() {
     try {
       // Chama o método find do modelo usuario para obter todos os usuarios cadastrados
-      return await usuario.find().select('-password').populate('animal').exec();;
+      return await Usuario.find().select('-password').populate('animal').exec();;
     } catch (error) {
       // Em caso de erro, lança o erro para ser tratado posteriormente
       throw error;
@@ -38,7 +38,7 @@ export class UsuarioRepository {
   async findUsuarioById(usuarioId: string) {
     try {
       // Chama o método usuariofindById do modelo usuario para obter o usuario pelo ID fornecido
-      return await usuario.findById(usuarioId);
+      return await Usuario.findById(usuarioId);
     } catch (error) {
       // Em caso de erro, lança o erro para ser tratado posteriormente
       throw error;
@@ -49,7 +49,7 @@ export class UsuarioRepository {
   async deleteUsuario(usuarioId: string) {
     try {
       // Chama o método findByIdAndDelete do modelo usuario para deletar o usuario com o ID fornecido
-      return await usuario.findByIdAndDelete(usuarioId);
+      return await Usuario.findByIdAndDelete(usuarioId);
     } catch (error) {
       // Em caso de erro, lança o erro para ser tratado posteriormente
       throw error;
