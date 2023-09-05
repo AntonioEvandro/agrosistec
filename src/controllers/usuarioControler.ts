@@ -64,5 +64,82 @@ export class usuarioController {
     }
   }
 
+  // Método para atualizar um usuario existente
+  async updateUsuario(req: Request, res: Response) {
+    const { usuarioId } = req.params; // Obtém o ID do usuario a ser atualizado dos parâmetros da URL
+    const updatedData = req.body; // Obtém os dados atualizados do corpo da requisição
+
+    try {
+      // Chama o método updateUsuario do UsuarioService para atualizar o usuario com o ID fornecido
+      const updatedUsuario = await this.usuarioService.updateUsuario(usuarioId, updatedData);
+
+      if (!updatedUsuario) {
+        // Caso o usuario não seja encontrado, retorna uma resposta com uma mensagem de erro
+        return res.status(404).json({ message: 'Usuario not found' });
+      }
+
+      // Retorna a resposta com o usuario atualizado e uma mensagem de sucesso
+      return res.status(200).json({ updatedData, message: 'Usuario updated successfully' });
+    } catch (error) {
+      // Em caso de erro, retorna uma resposta com o erro e uma mensagem de falha
+      return res.status(400).json({ error, message: 'Request error, check and try again' });
+    }
+  }
+
+  // Método para obter todos os usuarios cadastrados
+  async getUsuarios(req: Request, res: Response) {
+    try {
+      // Chama o método do serviço para obter todos os usuarios com seus animais associados
+      const usuariosWithAnimals = await this.usuarioService.getUsuarios();
+
+      // Retorna a resposta com a lista de usuarios e seus animais associados
+      return res.status(200).json({ usuariosWithAnimals, message: 'Listing All Usuarios and animals' });
+    } catch (error) {
+      // Em caso de erro, retorna uma resposta com o erro e uma mensagem de falha
+      return res.status(500).json({ error, message: 'Internal server error' });
+    }
+  }
+
+  // Método para obter um usuario específico pelo ID (não é um endpoint HTTP)
+  async getUsuarioById(req: Request, res: Response) {
+    const { usuarioId } = req.params; // Obtém o ID do usuario a ser buscado dos parâmetros da URL
+
+    try {
+      // Chama o método getUsuarioById do UsuarioService para obter o usuario pelo ID fornecido
+      const usuario = await this.usuarioService.getUsuarioById(usuarioId);
+
+      if (!usuario) {
+        // Caso o usuario não seja encontrado, retorna uma resposta com uma mensagem de erro
+        return res.status(404).json({ message: 'Usuario not found' });
+      }
+
+      // Retorna a resposta com o usuario encontrado e um status de sucesso
+      return res.status(200).json(usuario);
+    } catch (error) {
+      // Em caso de erro, retorna uma resposta com o erro e uma mensagem de falha
+      return res.status(400).json({ error, message: 'Request error, check and try again' });
+    }
+  }
+
+  // Método para deletar um usuario pelo ID
+  async deleteUsuario(req: Request, res: Response) {
+    const { usuarioId } = req.params;
+
+    try {
+      const deletedUsuario = await this.usuarioService.deleteUsuario(usuarioId);
+
+      if (!deletedUsuario) {
+        return res.status(404).json({ message: 'Usuario not found' });
+      }
+
+      return res.status(204).json({ message: 'Usuario deleted successfully' });
+    } catch (error: any) {
+      if (error.message === 'Usuario has animals associated') {
+        return res.status(403).json({ message: 'Usuario has animals associated and cannot be deleted' });
+      }
+
+      return res.status(400).json({ message: 'Request error, check and try again, usuario has animals associated and cannot be deleted' });
+    }
+  }
 
 }
