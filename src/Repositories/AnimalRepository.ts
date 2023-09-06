@@ -18,15 +18,17 @@ export class AnimalRepository {
             throw error;
         }
     }
-        async findAllAnimal() {
-            try {
-                // Chama o método find do modelo usuario para obter todos os usuarios cadastrados
-                return await Animal.find();
-            } catch (error) {
-                // Em caso de erro, lança o erro para ser tratado posteriormente
-                throw error;
-            }
+    
+  // Método para obter todos os animais cadastrados no banco de dados
+    async findAllAnimal() {
+        try {
+            // Chama o método find do modelo animal para obter todos os animais cadastrados
+            return await Animal.find();
+        } catch (error) {
+            // Em caso de erro, lança o erro para ser tratado posteriormente
+            throw error;
         }
+    }
 
     // Método para obter um animal específico pelo ID no banco de dados
     async findAnimalById(animalId: string) {
