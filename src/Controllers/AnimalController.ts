@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { AnimalService } from "../Services/AnimalService";
-import { UsuarioService } from "../Services/usuarioService";
+import { UsuarioService } from "../Services/UsuarioService";
 import Usuario from "../Models/usuario";
 
 export class AnimalController {

@@ -2,7 +2,7 @@
 import { Request, Response } from "express";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { UsuarioService } from '../Services/usuarioService'
+import { UsuarioService } from '../Services/UsuarioService'
 import Usuario from "../Models/usuario";
 
 // Controller do usuario, responsável por lidar com as requisições relacionadas aos usuarios
