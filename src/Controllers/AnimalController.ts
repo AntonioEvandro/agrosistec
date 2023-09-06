@@ -7,10 +7,6 @@ export class AnimalController {
   private animalService: AnimalService;
   private usuarioService: UsuarioService;
   static getAnimal: any; // Teste
-  static createAnimal: any;
-  static getAnimalById: any;
-  static updateAnimal: any;
-  static deleteAnimal: any;
   // Constutor da classe, onde é criada a instancia do animalService
   constructor() {
     this.animalService = new AnimalService();
