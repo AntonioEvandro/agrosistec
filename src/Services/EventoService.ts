@@ -8,5 +8,13 @@ export class EventoService {
   }
   
   // Metodo para criar um novo evento
+  async createEvento(data: any) {
+    try {
+      // Chama o método createEvento do EventoRepository para criar um novo evento com os dados fornecidos
+      return await this.eventoRepository.createEvento(data);
+    } catch (error) {
+      throw error;
+    }
+  }
   
 }
