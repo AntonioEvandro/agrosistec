@@ -22,7 +22,7 @@ export default router
 .get("/usuario/:id", AuthMiddleware, usuarioController.getUsuarioById.bind(usuarioController))
 .put("/usuario/:id", AuthMiddleware, usuarioController.updateUsuario.bind(usuarioController))
 .delete("/usuario/:id", AuthMiddleware, usuarioController.deleteUsuario.bind(usuarioController))
-// Rotas ora animal
+// Rotas para animal
 .post("/animal/:usuarioId", AuthMiddleware, AnimalController.createAnimal.bind(animalController))
 .get("/animal", AuthMiddleware, AnimalController.getAnimal.bind(AnimalController))
 .get("/animal/:usuarioId", AuthMiddleware, AnimalController.getAnimalById.bind(AnimalController))
