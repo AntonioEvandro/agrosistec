@@ -1,4 +1,4 @@
-import Usuario from "../models/usuario";
+import Usuario from "../Models/usuario";
 import { UsuarioRepository } from "../Repositories/UsuarioRepository";
 
 /*----------------- *** Funcionalidades *** ----------------------*/

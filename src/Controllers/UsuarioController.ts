@@ -2,11 +2,11 @@
 import { Request, Response } from "express";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { UsuarioService } from '../services/usuarioService'
-import Usuario from "../models/usuario";
+import { UsuarioService } from '../Services/usuarioService'
+import Usuario from "../Models/usuario";
 
 // Controller do usuario, responsável por lidar com as requisições relacionadas aos usuarios
-export class usuarioController {
+export class UsuarioController {
   private usuarioService: UsuarioService;
     static getUsers: any; // Teste
   

@@ -1,4 +1,4 @@
-import Usuario from "../models/usuario";
+import Usuario from "../Models/usuario";
 
 export class UsuarioRepository {
   // Método para criar um novo Usuario no banco de dados

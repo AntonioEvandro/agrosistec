@@ -1,4 +1,4 @@
-import Animal from "../models/animal";
+import Animal from "../Models/animal";
 
 export class AnimalRepository {
     // Método para criar um novo animal no banco de dados
@@ -18,7 +18,7 @@ export class AnimalRepository {
             throw error;
         }
     }
-        async findAllAnimal() {
+        async findAllAnimais() {
             try {
                 // Chama o método find do modelo usuario para obter todos os usuarios cadastrados
                 return await Animal.find();
