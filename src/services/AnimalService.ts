@@ -1,7 +1,7 @@
 import { AnimalRepository } from "../Repositories/AnimalRepository";
 
 /*----------------- *** Funcionalidades *** ----------------------*/
-export class AnimalService{
+export class AnimalService {
   private animalRepository: AnimalRepository;
 
   constructor() {
