@@ -29,10 +29,10 @@ export class AnimalService{
   }
 
   // Método para obter todos os animais
-  async getAnimais() {
+  async getAnimal() {
     try {
       // Chama o método findAllAnimais do AnimalRepository para obter todos os animais cadastrados
-      return await this.animalRepository.findAllAnimais();
+      return await this.animalRepository.findAllAnimal();
     } catch (error) {
       // Em caso de erro, lança o erro para ser tratado posteriormente
       throw error;

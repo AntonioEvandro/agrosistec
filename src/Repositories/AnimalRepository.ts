@@ -18,7 +18,7 @@ export class AnimalRepository {
             throw error;
         }
     }
-        async findAllAnimais() {
+        async findAllAnimal() {
             try {
                 // Chama o método find do modelo usuario para obter todos os usuarios cadastrados
                 return await Animal.find();
