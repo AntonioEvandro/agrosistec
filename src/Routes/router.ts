@@ -10,8 +10,7 @@ const animalController = new AnimalController();
 
 /*---------------------Gets e Posts----------------*/
 
-export default router
-.get("/home", (req: Request, res: Response) => {
+router.get("/home", (req: Request, res: Response) => {
     res.status(200).send("API Working!");
 })
 // Rota de autenticação
@@ -48,3 +47,4 @@ export default router
 .put("/producao/:producaoId/animal/:animalId", AuthMiddleware, producaoController.updateProducao.bind(producaoController))
 .delete("/producao/:producaoId/animal/:animalId", AuthMiddleware, producaoController.deleteProducao.bind(producaoController))
 */
+export { router };

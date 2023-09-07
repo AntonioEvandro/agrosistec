@@ -1,40 +1,31 @@
 import express from 'express';
-import config from "config";
-
-const app = express();
-
-//JSON middleware
-app.use(express.json());
-
+import { router } from '../src/Routes/router';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from "../swagger.json";
 
-app.use('/agrosistec', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+export class App {
+  public server: express.Application;
 
-//Porta do app
-const port = config.get<number>("port");
+  constructor() {
+      this.server = express();
+      this.middleware();
+      this.docs();
+      this.router();
+  }
 
-// Rotas
-import router from "./Routes/router";
+  private middleware() {
+      this.server.use(express.json());
+  }
 
-app.use("/", router);
+  private docs(){
+      this.server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  }
 
-import mongoose, { Mongoose } from 'mongoose';
-const dbUri = config.get<string>('dbUri');
-//console.log(dbUri);
+  private router() {
+      this.server.use(router);
+  }
 
-
-  
-async function conect() {
-  try {
-    await mongoose.connect(dbUri);
-    console.log(`Project running in port ${port}: http://localhost:${port}/agrosistec`);
-  } catch (e) {
-    console.log("Connection unnavaliable to the DB!")
-    console.log(`Erro: ${e}`)
+  public listen(port: number, callback: () => void): void {
+      this.server.listen(port, callback);
   }
 }
-
-app.listen(port, () => { 
-  conect()
-})
