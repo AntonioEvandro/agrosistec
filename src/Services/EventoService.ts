@@ -26,10 +26,10 @@ export class EventoService {
     }
   }
 
-  // Método para obter todos os animais
+  // Método para obter todos os eventos
   async getEvento() {
     try {
-      // Chama o método findAllAnimais do EventoRepository para obter todos os animais cadastrados
+      // Chama o método findAllEvento do EventoRepository para obter todos os animais cadastrados
       return await this.eventoRepository.findAllEvento();
     } catch (error) {
       // Em caso de erro, lança o erro para ser tratado posteriormente
