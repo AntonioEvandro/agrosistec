@@ -35,7 +35,7 @@ export class AnimalController {
       await usuario.save();
 
       // Return the response with the newly created animal and usuarioId
-      return res.status(201).json({ newAnimal, usuarioId: usuario._id, message: 'Animal created and associated with tutor successfully' });
+      return res.status(201).json({ newAnimal, usuarioId: usuario._id, message: 'Animal created and associated with usuario successfully' });
     } catch (error) {
       return res.status(400).json({ error, message: 'Request error, check and try again' });
     }
@@ -59,7 +59,7 @@ export class AnimalController {
       }
   }
 
-  // Método para obter todos os animais cadastrados, com os tutores associados
+  // Método para obter todos os animais cadastrados, com os usuarios associados
   async getAnimal(req: Request, res: Response) {
     try {
         // Chama o método getAnimal do AnimalService para obter a lista de animal
