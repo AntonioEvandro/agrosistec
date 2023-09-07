@@ -9,7 +9,11 @@
     "start:dev": "nodemon src/server.ts",
     "start:prod": "node dist/server.js"
   },
-  "keywords": [],
+  "keywords": [
+    "api",
+    "gateway",
+    "typescript"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
