@@ -28,6 +28,7 @@ export default router
 .get("/animal/:usuarioId", AuthMiddleware, animalController.getAnimalById.bind(animalController))
 .put("/animal/:animalId/usuario/:usuarioId", AuthMiddleware, animalController.updateAnimal.bind(animalController))
 .delete("/animal/:animalId/usuario/:usuarioId", AuthMiddleware, animalController.deleteAnimal.bind(animalController))
+/*
 // Rotas para Evento
 .post("/evento/:animalId", AuthMiddleware, eventoController.createEvento.bind(eventoController))
 .get("/evento", AuthMiddleware, eventoController.getEvento.bind(eventoController))
@@ -46,3 +47,4 @@ export default router
 .get("/producao/:animalId", AuthMiddleware, producaoController.getProducaoById.bind(producaoController))
 .put("/producao/:producaoId/animal/:animalId", AuthMiddleware, producaoController.updateProducao.bind(producaoController))
 .delete("/producao/:producaoId/animal/:animalId", AuthMiddleware, producaoController.deleteProducao.bind(producaoController))
+*/
