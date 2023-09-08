@@ -18,13 +18,13 @@ router.get("/home", (req: Request, res: Response) => {
 // Rotas para usuario
 .post("/usuario", usuarioController.createUsuario.bind(usuarioController))
 .get("/usuarios", usuarioController.getUsuarios.bind(usuarioController))
-.get("/usuario/:id", AuthMiddleware, usuarioController.getUsuarioById.bind(usuarioController))
-.put("/usuario/:id", AuthMiddleware, usuarioController.updateUsuario.bind(usuarioController))
-.delete("/usuario/:id", AuthMiddleware, usuarioController.deleteUsuario.bind(usuarioController))
+.get("/usuario/:usuarioId", AuthMiddleware, usuarioController.getUsuarioById.bind(usuarioController))
+.put("/usuario/:usuarioId", AuthMiddleware, usuarioController.updateUsuario.bind(usuarioController))
+.delete("/usuario/:usuarioId", AuthMiddleware, usuarioController.deleteUsuario.bind(usuarioController))
 // Rotas para animal
 .post("/animal/:usuarioId", AuthMiddleware, animalController.createAnimal.bind(animalController))
 .get("/animal", AuthMiddleware, animalController.getAnimal.bind(animalController))
-.get("/animal/:usuarioId", AuthMiddleware, animalController.getAnimalById.bind(animalController))
+.get("/animal/:animalId", AuthMiddleware, animalController.getAnimalById.bind(animalController))
 .put("/animal/:animalId/usuario/:usuarioId", AuthMiddleware, animalController.updateAnimal.bind(animalController))
 .delete("/animal/:animalId/usuario/:usuarioId", AuthMiddleware, animalController.deleteAnimal.bind(animalController))
 /*

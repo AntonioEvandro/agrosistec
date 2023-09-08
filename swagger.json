@@ -112,13 +112,13 @@
         }
       }
     },
-    "/usuario/{id}": {
+    "/usuario/{usuarioId}": {
       "get":{
         "tags": ["Usuario"],
         "summary": "Get specific usuario",
         "parameters": [
           {
-            "name": "id",
+            "name": "usuarioId",
             "in": "path",
             "required": true,
             "schema": {
@@ -152,7 +152,7 @@
         "summary": "Updates a usuario",
         "parameters": [
           {
-            "name": "id",
+            "name": "usuarioId",
             "in": "path",
             "required": true,
             "schema": {
@@ -196,7 +196,7 @@
         "summary": "Deletes a usuario",
         "parameters": [
           {
-            "name": "id",
+            "name": "usuarioId",
             "in": "path",
             "required": true,
             "schema": {

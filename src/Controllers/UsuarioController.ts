@@ -8,7 +8,7 @@ import Usuario from "../Models/usuario";
 // Controller do usuario, responsável por lidar com as requisições relacionadas aos usuarios
 export class UsuarioController {
   private usuarioService: UsuarioService;
-    static getUsers: any; // Teste
+  static getUsers: any; // Teste
   
   // Contrutor da classe, onde é criada a instância do UsuarioService
   constructor() {
@@ -107,10 +107,12 @@ export class UsuarioController {
     try {
       // Chama o método getUsuarioById do UsuarioService para obter o usuario pelo ID fornecido
       const usuario = await this.usuarioService.getUsuarioById(usuarioId);
-
       if (!usuario) {
-        // Caso o usuario não seja encontrado, retorna uma resposta com uma mensagem de erro
-        return res.status(404).json({ message: 'Usuario not found' });
+        return res.status(404).json({
+          error: true,
+          code: 404,
+          message: `No usuario with id ${usuarioId}`,
+        });
       }
 
       // Retorna a resposta com o usuario encontrado e um status de sucesso

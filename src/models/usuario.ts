@@ -2,7 +2,7 @@ import mongoose,{Schema} from 'mongoose';
 import bcrypt from 'bcrypt';
 
 const usuarioSchema = new mongoose.Schema({
-  nome:  {
+nome:  {
     type: String,
     required: true,
 },
