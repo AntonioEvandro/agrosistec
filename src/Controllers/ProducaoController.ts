@@ -91,4 +91,50 @@ export class ProducaoController {
       }
   }
   
+  // Método para deletar uma producao pelo ID
+  async deleteProducao(req: Request, res: Response) {
+    const { producaoId, animalId } = req.params;
+
+    try {
+        const animal = await this.animalService.getAnimalById(animalId);
+        //const animal = await Animal.findById(animalId);
+      
+        if (!animal) {
+          return res.status(404).json({
+            error: true,
+            code: 404,
+            message: `No animal with id ${animalId}`,
+          });
+        }
+        
+        const index = animal.producao.findIndex((producao: any) => producao.id === producaoId);
+        
+        const del = animal.producao.splice(index, 1);
+       // findByIdAndUpdate pegando direto da model, não passa pelo service nem pelo repository
+        const animalAtualizado = await Animal.findByIdAndUpdate(
+          animalId,
+          { $pull: { producoes: del[0] } },
+          { new: true }
+        );
+        if (!animalAtualizado) {
+          return res
+            .status(404)
+            .json({
+              error: true,
+              code: 404,
+              message: `error updating animal with id ${animalId}`,
+            });
+        }
+
+        const deletedProducao = await this.producaoService.deleteProducao(producaoId);
+
+        if (!deletedProducao) {
+            return res.status(404).json({ message: 'Producao not found' });
+        }
+
+        return res.status(204).json({ message: 'Producao deleted successfully' });
+    } catch (error) {
+        return res.status(400).json({ error, message: 'Request error, check and try again' });
+    }
+}
 }
