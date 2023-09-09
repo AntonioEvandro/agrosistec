@@ -45,4 +45,13 @@ export class ProduçãoService {
       throw error;
     }
   }
+  
+  // Método para deletar uma producao pelo ID
+  async deleteProducao(producaoId: string) {
+    try {
+      return await this.producaoRepository.deleteProducao(producaoId);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
