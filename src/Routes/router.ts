@@ -51,4 +51,5 @@ router.get("/home", (req: Request, res: Response) => {
 .get("/producao/:animalId", AuthMiddleware, producaoController.getProducaoById.bind(producaoController))
 .put("/producao/:producaoId/animal/:animalId", AuthMiddleware, producaoController.updateProducao.bind(producaoController))
 .delete("/producao/:producaoId/animal/:animalId", AuthMiddleware, producaoController.deleteProducao.bind(producaoController))
+
 export { router };
