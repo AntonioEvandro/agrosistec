@@ -1,6 +1,6 @@
 import { ProducaoRepository } from "../Repositories/ProducaoRepository";
 
-export class ProduçãoService {
+export class ProducaoService {
   private producaoRepository: ProducaoRepository;
 
   constructor() {
