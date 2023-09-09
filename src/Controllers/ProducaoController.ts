@@ -58,5 +58,37 @@ export class ProducaoController {
         return res.status(400).json({ error, message: 'Request error, check and try again' });
     }
   }
+
+  // Método para obter todas as producoes cadastradas, com os animais associados
+  async getProducao(req: Request, res: Response) {
+    try {
+        // Chama o método getProducao do ProducaoService para obter a lista de producao
+        const producoes = await this.producaoService.getProducao();
+
+        // Retorna a resposta com a lista de producao e um status de sucesso
+        return res.status(200).json({ producoes, message: 'Listing All producoes' });
+    } catch (error) {
+        // Em caso de erro, retorna uma resposta com o erro e uma mensagem de falha
+        return res.status(400).json({ error, message: 'Request error, check and try again' });
+    }
+  }
+
+    // Método para obter uma producao específica pelo ID
+    async getProducaoById(req: Request, res: Response) {
+      const { producaoId } = req.params;
+
+      try {
+          const producao = await this.producaoService.getProducaoById(producaoId);
+
+          
+          if (!producao) {
+              return res.status(404).json({ message: 'Producao not found' });
+          }
+
+          return res.status(200).json(producao);
+      } catch (error) {
+          return res.status(400).json({ error, message: 'Request error, check and try again' });
+      }
+  }
   
 }
