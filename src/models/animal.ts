@@ -14,7 +14,7 @@ const Schema = new mongoose.Schema({
       require: true
   },
   mediaLeite: {
-    type: String,
+    type: Number,
     require: true
   },
   datNasc: {
