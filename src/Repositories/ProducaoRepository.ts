@@ -10,4 +10,14 @@ export class ProducaoRepository {
       throw error;
     }
   }
+
+  // Método para atualizar uma producao existente no banco de dados
+  async updateProducao(producaoId: string, updatedData: any) {
+    try {
+      return await Producao.findByIdAndUpdate(producaoId, updatedData);
+    } catch (error) {
+      throw error;
+    }
+  }
+
 }
