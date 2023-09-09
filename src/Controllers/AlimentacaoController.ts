@@ -59,7 +59,7 @@ export class AlimentacaoController {
     }
   }
 
-  // Método para obter todas as alimentacoess cadastradas, com os animais associados
+  // Método para obter todas as alimentacoes cadastradas, com os animais associados
   async getAlimentacao(req: Request, res: Response) {
     try {
         // Chama o método getAlimentacao do AlimentacaoService para obter a lista de alimentacao
