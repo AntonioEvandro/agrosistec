@@ -26,7 +26,7 @@ export class AlimentacaoService {
     }
   }
 
-  // Método para obter todos as alimentacoess
+  // Método para obter todos as alimentacoes
   async getAlimentacao() {
     try {
       // Chama o método findAllAlimentacao do AlimentacaoRepository para obter todas as alimentacoes cadastradas
