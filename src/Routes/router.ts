@@ -5,12 +5,14 @@ import AuthController from './../Controllers/Auth';
 import AuthMiddleware from '../Middleware/AuthMiddleware';
 import { EventoController } from '../Controllers/EventoController';
 import { AlimentacaoController } from '../Controllers/AlimentacaoController';
+import { ProducaoController } from '../Controllers/ProducaoController';
 
 const usuarioController = new UsuarioController();
 const router: Router = Router();
 const animalController = new AnimalController();
 const eventoController = new EventoController();
 const alimentacaoController = new AlimentacaoController();
+const producaoController = new ProducaoController();
 
 /*---------------------Gets e Posts----------------*/
 
@@ -43,12 +45,10 @@ router.get("/home", (req: Request, res: Response) => {
 .get("/alimentacao/:animalId", AuthMiddleware, alimentacaoController.getAlimentacaoById.bind(alimentacaoController))
 .put("/alimentacao/:alimentacaoId/animal/:animalId", AuthMiddleware, alimentacaoController.updateAlimentacao.bind(alimentacaoController))
 .delete("/alimentacao/:alimentacaoId/animal/:animalId", AuthMiddleware, alimentacaoController.deleteAlimentacao.bind(alimentacaoController))
-/*
 // Rotas para Produção
 .post("/producao/:animalId", AuthMiddleware, producaoController.createProducao.bind(producaoController))
 .get("/producao", AuthMiddleware, producaoController.getProducao.bind(producaoController))
 .get("/producao/:animalId", AuthMiddleware, producaoController.getProducaoById.bind(producaoController))
 .put("/producao/:producaoId/animal/:animalId", AuthMiddleware, producaoController.updateProducao.bind(producaoController))
 .delete("/producao/:producaoId/animal/:animalId", AuthMiddleware, producaoController.deleteProducao.bind(producaoController))
-*/
 export { router };
