@@ -54,7 +54,7 @@ ou
 ## API documentation
 
 ```http
-  POST /login
+  POST /Login
 ```
 
  Example:
@@ -154,7 +154,7 @@ Return:
 #### Return usuario by id
 
 ```http
-  GET /usuario/{id}
+  GET /usuario/{usuarioId}
 ```
 
 Return: 
@@ -182,7 +182,7 @@ if not authenticated
 #### Update usuario by id
 
 ```http
-  PUT /usuario/{id}
+  PUT /usuario/{usuarioId}
 ```
 
 Example:
@@ -222,7 +222,7 @@ if not authenticated
 
 
 ```http
-  DELETE /Usuario/{id}
+  DELETE /Usuario/{usuarioId}
 ```
 
 Return:
@@ -343,6 +343,42 @@ if not authenticated
   "message": "Authentication invalid, unauthorized"
 }
 ```
+
+
+#### Return animal by id
+
+
+```http
+  GET /animal/{animalId}
+```
+
+Return: 
+```http
+{
+  "_id": "64c7efbd9d412b935a787792",
+  "nome": "Animal01",
+  "raca": "",
+  "peso": 500,
+  "mediaLeite": "5",
+  "dataNasc": "1993-12-12 10:10",
+  "dataDes": "2023-09-09",
+  "sexo": "F",
+  "faixaEta": "",
+  "status": ""
+  "__v": 0
+}
+```
+Authentication required
+
+if not authenticated
+```http
+{
+  "error": true,
+  "code": 401,
+  "message": "Authentication invalid, unauthorized"
+}
+```
+
 
 #### Update animal by id
 
