@@ -458,7 +458,7 @@ if not authenticated
 
 ## Feedback
 
-If you have any feedback, please let us know via Instagram. [@AntonioEvandro](https://www.instagram.com/evandro.013/) , [Camila Lima](https://www.instagram.com/camilalimalp/), [Fabricio Alves](https://wwwinstagram.com/fabricio.alves0/) or Email [Antonio Evandro](antonio.evandro.borges07@aluno.ifce.edu.br)
+If you have any feedback, please let us know via Instagram. [@AntonioEvandro](https://www.instagram.com/evandro.013/) , [Camila Lima](https://www.instagram.com/camilalimalp/), [Fabricio Alves](https://wwwinstagram.com/fabricio.alves0/) or Email [Antonio Evandro](mailto:antonio.evandro.borges07@aluno.ifce.edu.br)
 
 
 ## Authors
