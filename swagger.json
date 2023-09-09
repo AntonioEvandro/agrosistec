@@ -504,7 +504,7 @@
         "properties": {
           "nome": {
             "type": "string",
-            "default": ""
+            "default": "Jurema"
           },
           "raca": {
             "type": "string",
@@ -513,11 +513,12 @@
           "peso": {
             "type": "number",
             "format": "float",
-            "default": 1
+            "default": 500
           },
           "mediaLeite": {
-            "type": "string",
-            "default": ""
+            "type": "number",
+            "format": "float",
+            "default": 7
           },
           "dataNasc": {
             "type": "string",
@@ -529,7 +530,7 @@
           },
           "sexo": {
             "type": "string",
-            "default": ""
+            "default": "F"
           },
           "faixaEta": {
             "type": "string",
@@ -547,6 +548,102 @@
           "dataNasc",
           "sexo",
           "status"
+        ]
+      },
+      "Producao": {
+        "type":"object",
+        "properties": {
+          "primOdenha": {
+            "type": "number",
+            "format": "float",
+            "default": 5
+          },
+          "segOrdenha":  {
+            "type": "number",
+            "format": "float",
+            "default": 10
+          },
+          "data":  {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "required": [
+          "primOrdenha",
+          "segOrdenha",
+          "data"
+        ]
+      },
+      "Evento": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "default": "vacinação"
+          },
+          "veterinario": {
+            "type": "string",
+            "default": ""
+          },
+          "valorVet": {
+            "type": "number",
+            "format": "float",
+            "default": 5000
+          },
+          "problema": {
+            "type": "string",
+            "default": ""
+          },
+          "medicamento": {
+            "type": "string",
+            "default": ""
+          },
+          "valorMedica": {
+            "type": "number",
+            "format": "float",
+            "default": 500
+          },
+          "data": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "required":[
+          "nome",
+          "veterinario",
+          "valorVet",
+          "problema",
+          "medicamento",
+          "valorMedica",
+          "data"
+        ]
+      },
+      "Alimentacao": {
+        "type": "object",
+        "properties": {
+          "tipo": {
+            "type": "string",
+            "default": ""
+          },
+          "regime": {
+            "type": "string",
+            "default": ""
+          },
+          "quantidade": {
+            "type": "number",
+            "format": "float",
+            "default": 10
+          },
+          "data": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "required": [
+          "tipo",
+          "regime",
+          "quantidade",
+          "data"
         ]
       }
     },
