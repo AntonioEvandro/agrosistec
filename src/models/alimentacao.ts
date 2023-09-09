@@ -27,4 +27,4 @@ const Schema = new mongoose.Schema({
   }
 })
 
-export = mongoose.model('evento', Schema);
+export = mongoose.model('alimentacao', Schema);
