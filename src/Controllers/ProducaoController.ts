@@ -41,4 +41,22 @@ export class ProducaoController {
     }
   }
   
+  // Método para atualizar uma producao existente
+  async updateProducao(req: Request, res: Response) {
+    const { producaoId } = req.params;
+    const updatedData = req.body;
+
+    try {
+        const updatedProducao = await this.producaoService.updateProducao(producaoId, updatedData);
+
+        if (!updatedProducao) {
+            return res.status(404).json({ message: 'Producao not found' });
+        }
+
+        return res.status(200).json({ updatedData, message: 'Producao updated successfully' });
+    } catch (error) {
+        return res.status(400).json({ error, message: 'Request error, check and try again' });
+    }
+  }
+  
 }
