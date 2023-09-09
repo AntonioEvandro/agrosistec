@@ -25,4 +25,24 @@ export class ProduçãoService {
       throw error;
     }
   }
+  
+  // Método para obter todos as producoes
+  async getProducao() {
+    try {
+      // Chama o método findAllProducao do ProducaoRepository para obter todas as producoes cadastradas
+      return await this.producaoRepository.findAllProducao();
+    } catch (error) {
+      // Em caso de erro, lança o erro para ser tratado posteriormente
+      throw error;
+    }
+  }
+
+  // Método para obter uma producao específica pelo ID
+  async getProducaoById(producaoId: string) {
+    try {
+      return await this.producaoRepository.findProducaoById(producaoId);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
