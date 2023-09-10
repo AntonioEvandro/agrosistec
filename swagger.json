@@ -1014,7 +1014,7 @@
         "summary": "Updates a production's info",
         "parameters": [
           {
-            "name": "animalId",
+            "name": "producaoId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1022,7 +1022,7 @@
             }
           },
           {
-            "name": "producaoId",
+            "name": "animalId",
             "in": "path",
             "required": true,
             "schema": {
