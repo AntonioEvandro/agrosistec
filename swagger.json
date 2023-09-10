@@ -476,7 +476,8 @@
           "400": {
             "description": "Request error"
           }
-        }}
+        }
+      }
     },
     "/evento/{eventoId}": {
       "get": {
@@ -694,7 +695,8 @@
           "400": {
             "description": "Request error"
           }
-        }}
+        }
+      }
     },
     "/alimentacao/{alimentacaoId}": {
       "get": {
@@ -739,25 +741,370 @@
       }
     },
     "/alimentacao/{animalId}": {
-      "get": {},
-      "post": {}
+      "post": {
+        "tags": ["Alimentacao"],
+        "summary": "Creates a alimentacao and adds it to a animal",
+        "parameters": [
+          {
+            "name": "animalId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "Data for a new alimentacao",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Alimentacao"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Alimentacao added"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Animal not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
     },
     "/alimentacao/alimentacaoId/animal/animalId": {
-      "put": {},
-      "delete": {}
+      "put": {
+        "tags": ["Alimentacao"],
+        "summary": "Updates a food's info",
+        "parameters": [
+          {
+            "name": "alimentacaoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "animalId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "New data for the alimentacao",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Alimentacao"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Alimentacao updated"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Alimentacao not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Alimentacao"],
+        "summary": "Deletes a alimentacao from a animal",
+        "parameters": [
+          {
+            "name": "alimentacaoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "animalId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Alimentacao deleted"
+          },
+          "401": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Alimentacao not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
     },
 
-    "/producao": {},
+    "/producao": {
+      "get": {
+        "tags": ["Producao"],
+        "summary": "Retrieves all productions.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listing All productions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type":"array",
+                  "items": {
+                    "$ref":"#/components/schemas/Producao"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request error"
+          }
+        }
+      }
+    },
     "/producao/{producaoId}": {
-      "get": {}
+      "get": {
+        "tags": ["Producao"],
+        "summary": "Get specific producao",
+        "parameters": [
+          {
+            "name": "producaoId",
+            "in": "path",
+            "requery": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Producao data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref":"#/components/schemas/Producao"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request error"
+          },
+          "404": {
+            "description": "Producao not found"
+          }
+        }
+      }
     },
     "/producao/{animalId}": {
-      "get": {},
-      "post": {}
+      "post": {
+        "tags": ["Producao"],
+        "summary": "Creates a producao and adds it to a animal",
+        "parameters": [
+          {
+            "name": "animalId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "Data for a new producao",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Producao"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Producao added"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Animal not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
     },
     "/producao/producaoId/animal/animalId": {
-      "put": {},
-      "delete": {}
+      "put": {
+        "tags": ["Producao"],
+        "summary": "Updates a food's info",
+        "parameters": [
+          {
+            "name": "producaoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "animalId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "New data for the producao",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Producao"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Producao updated"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Producao not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Producao"],
+        "summary": "Deletes a producao from a animal",
+        "parameters": [
+          {
+            "name": "producaoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "animalId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Producao deleted"
+          },
+          "401": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Producao not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
     }
 
 
