@@ -440,7 +440,48 @@
           }
         }
       }
+    },
+
+    "/evento": {},
+    "/evento/{eventoId}": {
+      "get": {}
+    },
+    "/evento/{animalId}": {
+      "get": {},
+      "post": {}
+    },
+    "/evento/eventoId/animal/animalId": {
+      "put": {},
+      "delete": {}
+    },
+
+    "/alimentacao": {},
+    "/alimentacao/{alimentacaoId}": {
+      "get": {}
+    },
+    "/alimentacao/{animalId}": {
+      "get": {},
+      "post": {}
+    },
+    "/alimentacao/alimentacaoId/animal/animalId": {
+      "put": {},
+      "delete": {}
+    },
+
+    "/producao": {},
+    "/producao/{producaoId}": {
+      "get": {}
+    },
+    "/producao/{animalId}": {
+      "get": {},
+      "post": {}
+    },
+    "/producao/producaoId/animal/animalId": {
+      "put": {},
+      "delete": {}
     }
+
+
   },
   "components": {
     "schemas": {

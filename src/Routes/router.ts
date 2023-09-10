@@ -34,21 +34,21 @@ router.get("/home", (req: Request, res: Response) => {
 .put("/animal/:animalId/usuario/:usuarioId", AuthMiddleware, animalController.updateAnimal.bind(animalController))
 .delete("/animal/:animalId/usuario/:usuarioId", AuthMiddleware, animalController.deleteAnimal.bind(animalController))
 // Rotas para Evento
-.post("/evento/:animalId", AuthMiddleware, eventoController.createEvento.bind(eventoController))
 .get("/evento", AuthMiddleware, eventoController.getEvento.bind(eventoController))
-.get("/evento/:animalId", AuthMiddleware, eventoController.getEventoById.bind(eventoController))
+.get("/evento/:eventoId", AuthMiddleware, eventoController.getEventoById.bind(eventoController))
+.post("/evento/:animalId", AuthMiddleware, eventoController.createEvento.bind(eventoController))
 .put("/evento/:eventoId/animal/:animalId", AuthMiddleware, eventoController.updateEvento.bind(eventoController))
 .delete("/evento/:eventoId/animal/:animalId", AuthMiddleware, eventoController.deleteEvento.bind(eventoController))
 // Rotas para Alimentação
-.post("/alimentacao/:animalId", AuthMiddleware, alimentacaoController.createAlimentacao.bind(alimentacaoController))
 .get("/alimentacao", AuthMiddleware, alimentacaoController.getAlimentacao.bind(alimentacaoController))
-.get("/alimentacao/:animalId", AuthMiddleware, alimentacaoController.getAlimentacaoById.bind(alimentacaoController))
+.get("/alimentacao/:alimentacaoId", AuthMiddleware, alimentacaoController.getAlimentacaoById.bind(alimentacaoController))
+.post("/alimentacao/:animalId", AuthMiddleware, alimentacaoController.createAlimentacao.bind(alimentacaoController))
 .put("/alimentacao/:alimentacaoId/animal/:animalId", AuthMiddleware, alimentacaoController.updateAlimentacao.bind(alimentacaoController))
 .delete("/alimentacao/:alimentacaoId/animal/:animalId", AuthMiddleware, alimentacaoController.deleteAlimentacao.bind(alimentacaoController))
 // Rotas para Produção
-.post("/producao/:animalId", AuthMiddleware, producaoController.createProducao.bind(producaoController))
 .get("/producao", AuthMiddleware, producaoController.getProducao.bind(producaoController))
-.get("/producao/:animalId", AuthMiddleware, producaoController.getProducaoById.bind(producaoController))
+.get("/producao/:producaoId", AuthMiddleware, producaoController.getProducaoById.bind(producaoController))
+.post("/producao/:animalId", AuthMiddleware, producaoController.createProducao.bind(producaoController))
 .put("/producao/:producaoId/animal/:animalId", AuthMiddleware, producaoController.updateProducao.bind(producaoController))
 .delete("/producao/:producaoId/animal/:animalId", AuthMiddleware, producaoController.deleteProducao.bind(producaoController))
 
