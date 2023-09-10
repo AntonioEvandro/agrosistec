@@ -12,10 +12,18 @@
     },{
       "name": "Usuario",
       "description": "Features for usuarios"
-    },
-    {
+    },{
       "name": "Animal",
       "description": "Features for animal"
+    },{
+      "name": "Evento",
+      "description": "Features for event"
+    },{
+      "name": "Alimentacao",
+      "description": "Features for food"
+    },{
+      "name": "Producao",
+      "description":"Features for production"
     }
   ],
 
@@ -442,22 +450,293 @@
       }
     },
 
-    "/evento": {},
+    "/evento": {
+      "get": {
+        "tags": ["Evento"],
+        "summary": "Retrieves all events.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listing All events",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type":"array",
+                  "items": {
+                    "$ref":"#/components/schemas/Evento"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request error"
+          }
+        }}
+    },
     "/evento/{eventoId}": {
-      "get": {}
+      "get": {
+        "tags": ["Evento"],
+        "summary": "Get specific evento",
+        "parameters": [
+          {
+            "name": "eventoId",
+            "in": "path",
+            "requery": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Evento data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref":"#/components/schemas/Evento"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request error"
+          },
+          "404": {
+            "description": "Evento not found"
+          }
+        }
+      }
     },
     "/evento/{animalId}": {
-      "get": {},
-      "post": {}
+      "post": {
+        "tags": ["Evento"],
+        "summary": "Creates a evento and adds it to a animal",
+        "parameters": [
+          {
+            "name": "animalId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "Data for a new evento",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Evento"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Evento added"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Animal not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
     },
     "/evento/eventoId/animal/animalId": {
-      "put": {},
-      "delete": {}
+      "put": {
+        "tags": ["Evento"],
+        "summary": "Updates a evento's info",
+        "parameters": [
+          {
+            "name": "eventoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "animalId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "New data for the evento",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Evento"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Evento updated"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Evento not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Evento"],
+        "summary": "Deletes a evento from a animal",
+        "parameters": [
+          {
+            "name": "eventoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "animalId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Evento deleted"
+          },
+          "401": {
+            "description": "Access denied"
+          },
+          "404": {
+            "description": "Evento not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
     },
 
-    "/alimentacao": {},
+    "/alimentacao": {
+      "get": {
+        "tags": ["Alimentacao"],
+        "summary": "Retrieves all foods.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listing All foods",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type":"array",
+                  "items": {
+                    "$ref":"#/components/schemas/Alimentacao"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request error"
+          }
+        }}
+    },
     "/alimentacao/{alimentacaoId}": {
-      "get": {}
+      "get": {
+        "tags": ["Alimentacao"],
+        "summary": "Get specific alimentacao",
+        "parameters": [
+          {
+            "name": "alimentacaoId",
+            "in": "path",
+            "requery": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Alimentacao data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref":"#/components/schemas/Alimentacao"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request error"
+          },
+          "404": {
+            "description": "Alimentacao not found"
+          }
+        }
+      }
     },
     "/alimentacao/{animalId}": {
       "get": {},
@@ -580,6 +859,18 @@
           "status": {
             "type": "string",
             "default": ""
+          },
+          "evento": {
+            "type": "array",
+            "default": []
+          },
+          "alimentacao": {
+            "type": "array",
+            "default": []
+          },
+          "producao": {
+            "type": "array",
+            "default": []
           }
         },
         "required": [
@@ -588,7 +879,10 @@
           "peso",
           "dataNasc",
           "sexo",
-          "status"
+          "status",
+          "evento",
+          "alimentacao",
+          "producao"
         ]
       },
       "Producao": {
