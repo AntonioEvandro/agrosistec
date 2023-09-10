@@ -23,7 +23,7 @@ export class AnimalRepository {
     async findAllAnimal() {
         try {
             // Chama o método find do modelo animal para obter todos os animais cadastrados
-            return await Animal.find();
+            return await Animal.find().populate(['evento','alimentacao','producao']).exec();
         } catch (error) {
             // Em caso de erro, lança o erro para ser tratado posteriormente
             throw error;

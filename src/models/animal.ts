@@ -37,10 +37,6 @@ const Schema = new mongoose.Schema({
     type: String, 
     required: true 
   },
-  usuario: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'usuario'
-  },
   evento: [
     {
         type: mongoose.Schema.Types.ObjectId,
@@ -58,7 +54,11 @@ const Schema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'producao'
     }
-  ]
+  ],
+  usuario: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'usuario'
+  }
 })
 
 export = mongoose.model('animal', Schema);

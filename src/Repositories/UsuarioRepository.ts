@@ -27,7 +27,7 @@ export class UsuarioRepository {
   async findAllUsuarios() {
     try {
       // Chama o método find do modelo usuario para obter todos os usuarios cadastrados
-      return await Usuario.find().select('-password').populate('animal').exec();;
+      return await Usuario.find().select('-password').populate({path: 'animal', populate: [{path: 'evento'},{path: 'alimentacao'},{path: 'producao'}]}).exec();;
     } catch (error) {
       // Em caso de erro, lança o erro para ser tratado posteriormente
       throw error;
