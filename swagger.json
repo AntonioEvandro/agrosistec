@@ -357,7 +357,7 @@
         "summary": "Updates a animal's info",
         "parameters": [
           {
-            "name": "animalId",
+            "name": "usuarioId",
             "in": "path",
             "required": true,
             "schema": {
@@ -365,7 +365,7 @@
             }
           },
           {
-            "name": "usuarioId",
+            "name": "animalId",
             "in": "path",
             "required": true,
             "schema": {
@@ -570,7 +570,7 @@
         }
       }
     },
-    "/evento/eventoId/animal/animalId": {
+    "/evento/{eventoId}/animal/{animalId}": {
       "put": {
         "tags": ["Evento"],
         "summary": "Updates a evento's info",
@@ -789,7 +789,7 @@
         }
       }
     },
-    "/alimentacao/alimentacaoId/animal/animalId": {
+    "/alimentacao/{alimentacaoId}/animal/{animalId}": {
       "put": {
         "tags": ["Alimentacao"],
         "summary": "Updates a food's info",
@@ -1008,13 +1008,13 @@
         }
       }
     },
-    "/producao/producaoId/animal/animalId": {
+    "/producao/{producaoId}/animal/{animalId}": {
       "put": {
         "tags": ["Producao"],
-        "summary": "Updates a food's info",
+        "summary": "Updates a production's info",
         "parameters": [
           {
-            "name": "producaoId",
+            "name": "animalId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1022,7 +1022,7 @@
             }
           },
           {
-            "name": "animalId",
+            "name": "producaoId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1175,7 +1175,7 @@
           },
           "raca": {
             "type": "string",
-            "default": ""
+            "default": "Jersey"
           },
           "peso": {
             "type": "number",
@@ -1201,11 +1201,11 @@
           },
           "faixaEta": {
             "type": "string",
-            "default": ""
+            "default": "Adulto"
           },
           "status": {
             "type": "string",
-            "default": ""
+            "default": "lactante"
           },
           "evento": {
             "type": "array",
@@ -1235,15 +1235,15 @@
       "Producao": {
         "type":"object",
         "properties": {
-          "primOdenha": {
+          "primOrdenha": {
             "type": "number",
             "format": "float",
-            "default": 5
+            "default": 22
           },
           "segOrdenha":  {
             "type": "number",
             "format": "float",
-            "default": 10
+            "default": 19
           },
           "data":  {
             "type": "string",
@@ -1261,29 +1261,29 @@
         "properties": {
           "nome": {
             "type": "string",
-            "default": "vacinação"
+            "default": "Verminose"
           },
           "veterinario": {
             "type": "string",
-            "default": ""
+            "default": "Artu Brito"
           },
           "valorVet": {
             "type": "number",
             "format": "float",
-            "default": 5000
+            "default": 77.77
           },
           "problema": {
             "type": "string",
-            "default": ""
+            "default": "Trichusris sp."
           },
           "medicamento": {
             "type": "string",
-            "default": ""
+            "default": "Vermisal"
           },
           "valorMedica": {
             "type": "number",
             "format": "float",
-            "default": 500
+            "default": 95.90
           },
           "data": {
             "type": "string",
@@ -1303,18 +1303,18 @@
       "Alimentacao": {
         "type": "object",
         "properties": {
-          "tipo": {
-            "type": "string",
-            "default": ""
-          },
           "regime": {
             "type": "string",
-            "default": ""
+            "default": "Pastagem"
+          },
+          "tipo": {
+            "type": "string",
+            "default": "Capim corrente"
           },
           "quantidade": {
             "type": "number",
             "format": "float",
-            "default": 10
+            "default": 15.00
           },
           "data": {
             "type": "string",
@@ -1322,8 +1322,8 @@
           }
         },
         "required": [
-          "tipo",
           "regime",
+          "tipo",
           "quantidade",
           "data"
         ]
